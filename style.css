@@ -1,0 +1,536 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: #e74c3c;
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #fff, #f0f0f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::before {
+    width: 80%;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+    margin-top: 80px; /* Account for fixed header */
+}
+
+.section {
+    padding: 5rem 10%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ===== HOME SECTION ===== */
+#home-page {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    align-items: center;
+}
+
+#home-page h2 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+}
+
+#home-page h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    background: #e74c3c;
+}
+
+#home-page p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+/* ===== ABOUT SECTION ===== */
+#about-page {
+    background: #f9f9f9;
+}
+
+#about-page article {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+#about-page article:hover {
+    transform: translateY(-5px);
+}
+
+#about-page h3 {
+    color: #667eea;
+    font-size: 1.8rem;
+}
+
+/* ===== SERVICES SECTION ===== */
+#services-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+#services-page h2::after {
+    background: white;
+}
+
+#services-page ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    margin-top: 2rem;
+}
+
+#services-page li {
+    background: rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+#services-page li:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+/* ===== PROJECTS SECTION ===== */
+#projects-page {
+    background: white;
+}
+
+#projects-page p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Add project grid placeholder */
+#projects-page::after {
+    content: '';
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    height: 300px;
+    background: linear-gradient(45deg, #f3f3f3 25%, transparent 25%),
+                linear-gradient(-45deg, #f3f3f3 25%, transparent 25%);
+    background-size: 30px 30px;
+    border-radius: 10px;
+}
+
+/* ===== TEAM SECTION - CONTACT CARD STYLE ===== */
+#Team {
+    padding: 5rem 10%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+#Team h2 {
+    text-align: center;
+    display: block;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+#Team h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    background: #e74c3c;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.team-member {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+}
+
+/* Image Container */
+.team-member .img-container {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.team-member img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.team-member:hover img {
+    transform: scale(1.1);
+}
+
+/* Gradient overlay on image */
+.team-member .img-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+}
+
+/* Member Info */
+.team-member .member-info {
+    padding: 1.5rem 1.5rem 2rem;
+    position: relative;
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.team-member .role {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.2rem 1rem;
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: 20px;
+}
+
+.team-member .bio {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 4.2rem;
+}
+
+/* Contact Info */
+.team-member .contact-details {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+}
+
+.team-member .contact-details p {
+    margin: 0.3rem 0;
+    color: #555;
+}
+
+.team-member .contact-details i {
+    color: #667eea;
+    width: 20px;
+    display: inline-block;
+}
+
+/* Social Links */
+.team-member .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.team-member .social-links a {
+    width: 35px;
+    height: 35px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.team-member .social-links a:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Email Button */
+.team-member .email-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.team-member .email-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Placeholder image styling */
+.team-member img[alt="Team Member"] {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    position: relative;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .team-member .img-container {
+        height: 200px;
+    }
+}
+/* ===== FOOTER ===== */
+footer {
+    background: #2c3e50;
+    color: white;
+    padding: 3rem 10% 2rem;
+}
+
+footer p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+    opacity: 1;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.social-media a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-media a:hover {
+    background: #e74c3c;
+    transform: translateY(-3px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .logo {
+        margin-bottom: 1rem;
+    }
+    
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    #home-page h2 {
+        font-size: 2.5rem;
+    }
+    
+    .section {
+        padding: 3rem 5%;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    footer a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center {
+    text-align: center;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
