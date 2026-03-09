@@ -9,61 +9,50 @@
 <body>
     
     <!-- Header section with logo and navigation menu -->
-
     <header>
         <h1 class="logo">Nostolgia studios</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Team</a></li>
+                <li><a href="#home-page">Home</a></li>
+                <li><a href="#about-page">About</a></li>
+                <li><a href="#services-page">Services</a></li>
+                <li><a href="#projects-page">Projects</a></li>
+                <li><a href="#Team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Main section -->
-
     <main>
-
         <!-- Home section -->
-
-        <section id="home-page"class="section">
-            <h2>
-                NOSTOLGIA STUDIOS
-            </h2>
-            <P>
-                Creating memories.
-            </P>
+        <section id="home-page" class="section">
+            <h2>NOSTOLGIA STUDIOS</h2>
+            <p>Creating memories.</p>
         </section>
 
-        <!-- About section -->
-
-        <section id="about-page"class="section">
-            <h2>
-                ABOUT US
-            </h2>
-            <article class="article 1">
-                <h3>Our philosophy</h3>
-                <p>
-                    At Nostalgia Studios, we believe that every frame has a story and every moment holds an emotion. Founded on the principle of capturing the essence of "nostalgia"—that warm, wistful feeling of remembering—we specialize in creating visual content that is not only beautiful but also deeply meaningful. Our work is a blend of artistic vision and technical excellence, designed to resonate with audiences and stand the test of time.
-                </p>
-            </article>
-            <article class="article 2">
-                <h3>Our vision</h3>
-                <p>
-                    Our mission is to be more than just a multimedia company; we aim to be your creative partners. Whether we're documenting a once-in-a-lifetime event, producing a compelling brand story, or crafting a cinematic narrative, we are committed to collaboration, quality, and delivering a final product that you will cherish and be proud to share for years to come.
-                </p>
-            </article>
-        </section>
+       <!-- About section -->
+<section id="about-page" class="section">
+    <h2>ABOUT US</h2>
+    <div class="about-container">
+        <article class="article-1">
+            <h3>Our philosophy</h3>
+            <p>
+                At Nostalgia Studios, we believe that every frame has a story and every moment holds an emotion. Founded on the principle of capturing the essence of "nostalgia"—that warm, wistful feeling of remembering—we specialize in creating visual content that is not only beautiful but also deeply meaningful. Our work is a blend of artistic vision and technical excellence, designed to resonate with audiences and stand the test of time.
+            </p>
+        </article>
+        <article class="article-2">
+            <h3>Our vision</h3>
+            <p>
+                Our mission is to be more than just a multimedia company; we aim to be your creative partners. Whether we're documenting a once-in-a-lifetime event, producing a compelling brand story, or crafting a cinematic narrative, we are committed to collaboration, quality, and delivering a final product that you will cherish and be proud to share for years to come.
+            </p>
+        </article>
+    </div>
+</section>
 
         <!-- Services section -->
-
         <section id="services-page" class="section">
-            <h2>
-                OUR SERVICES
-            </h2>
+            <h2>OUR SERVICES</h2>
             <ul>
                 <li>Video Production</li>
                 <li>Photography</li>
@@ -73,24 +62,21 @@
                 <li>Studio Photography</li>
                 <li>Outdoor & Lifestyle</li>
             </ul>
-            
         </section>
 
         <!-- Projects section -->
         <section id="projects-page" class="section">
-            <h2>
-                OUR PROJECTS
-            </h2>
-            <p>
-                Here are some of our recent works:
-            </p>
+            <h2>OUR PROJECTS</h2>
+            <p>Here are some of our recent works:</p>
+            <div class="project-gallery">
+                <!-- Projects will be added here -->
+            </div>
         </section>
     </main>
 
-    <!-- Team section - ALL YOUR ORIGINAL MEMBERS preserved! -->
+    <!-- Team section -->
     <section id="Team">
         <h2>Meet the Team</h2>
-        
         <div class="team-grid">
             <!-- Ms Balica -->
             <article class="team-member">
@@ -314,23 +300,51 @@
         </div>
     </section>
 
-    <!-- Footer section -->
+    <!-- Contact section (FIXED) -->
+    <section id="contact" class="section">
+        <h2>CONTACT US</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p><span>📧</span> info@nostalgia.com</p>
+                <p><span>📞</span> +260 123 456 700</p>
+                <p><span>📍</span> Lusaka, Zambia</p>
+                <p><span>⏰</span> Mon-Fri: 9am - 6pm</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
 
+    <!-- Footer section (IMPROVED) -->
     <footer>
-        <p>&copy; 2026 Nostalgia Studios. All rights reserved.</p>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Contact Us</a>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home-page">Home</a>
+                <a href="#about-page">About</a>
+                <a href="#services-page">Services</a>
+                <a href="#projects-page">Projects</a>
+                <a href="#Team">Team</a>
+                <a href="#contact">Contact</a>
+            </div>
 
-        <!-- Social media links -->
-        <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
-            <a href="#">LinkedIn</a>
+            <!-- IMPROVED SOCIAL MEDIA ICONS -->
+            <div class="social-media">
+                <a href="#" title="Facebook">FB</a>
+                <a href="#" title="Instagram">IG</a>
+                <a href="#" title="Twitter">X</a>
+                <a href="#" title="LinkedIn">IN</a>
+            </div>
+
+            <p>&copy; 2026 Nostalgia Studios. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
 
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
-
