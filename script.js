@@ -287,7 +287,7 @@ function initScrollAnimations() {
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
     
     sections.forEach(section => {
         section.classList.add('fade-in');
@@ -537,6 +537,15 @@ document.addEventListener('load', function(e) {
         e.target.classList.add('loaded');
     }
 }, true);
+
+// Check for images already loaded (e.g. from cache)
+window.addEventListener('load', () => {
+    document.querySelectorAll('img').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        }
+    });
+});
 
 // ===== 11. WELCOME MESSAGE =====
 console.log('✨ Nostalgia Studios - All systems ready!');
