@@ -412,7 +412,7 @@ main {
     box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
 }
 
-/* ===== TEAM SECTION ===== */
+/* ===== TEAM SECTION - UPDATED FOR BETTER IMAGE FITTING ===== */
 #Team {
     padding: 5rem 10%;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -449,6 +449,9 @@ main {
     transition: all 0.3s ease;
     text-align: center;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .team-member:hover {
@@ -456,36 +459,70 @@ main {
     box-shadow: 0 25px 45px rgba(0,0,0,0.15);
 }
 
+/* UPDATED: Better image container with fixed aspect ratio */
 .team-member .img-container {
-    height: 250px;
-    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Creates a perfect square */
     position: relative;
+    overflow: hidden;
+    background: #f0f0f0; /* Fallback color while image loads */
 }
 
+/* UPDATED: Image positioning to fit perfectly */
 .team-member img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    object-position: center; /* Centers the image */
     transition: transform 0.5s ease;
 }
+
+/* OPTIONAL: Different aspect ratio (portrait/landscape) */
+/* Uncomment if you want rectangle instead of square */
+/*
+.team-member .img-container {
+    padding-bottom: 120%; /* Taller rectangle */
+
+*/
 
 .team-member:hover img {
     transform: scale(1.1);
 }
 
+/* UPDATED: Gradient overlay for better text visibility */
 .team-member .img-container::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-    height: 50%;
-    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+                transparent 0%, 
+                transparent 50%, 
+                rgba(0,0,0,0.3) 80%, 
+                rgba(0,0,0,0.5) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.team-member:hover .img-container::after {
+    opacity: 1;
 }
 
 .team-member .member-info {
     padding: 1.5rem 1.5rem 2rem;
     position: relative;
+    background: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .team-member h3 {
@@ -506,6 +543,7 @@ main {
     padding: 0.2rem 1rem;
     background: rgba(231, 76, 60, 0.1);
     border-radius: 20px;
+    align-self: flex-start;
 }
 
 .team-member .bio {
@@ -515,9 +553,11 @@ main {
     margin-bottom: 1.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     min-height: 4.2rem;
+    flex-grow: 1;
 }
 
 .team-member .contact-details {
@@ -574,6 +614,7 @@ main {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    align-self: center;
 }
 
 .team-member .email-btn:hover {
