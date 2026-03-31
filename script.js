@@ -18,7 +18,82 @@ document.addEventListener('DOMContentLoaded', function() {
     initActiveNavHighlight();
     initBackToTop();
     initScrollAnimations();
+    initHeroSlider();
+    initLegalModals();
 });
+
+// ===== HERO SLIDER =====
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length === 0) return;
+
+    let currentSlide = 0;
+    const slideInterval = 8000; // 8 seconds
+    
+    setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }, slideInterval);
+}
+
+// ===== LEGAL MODALS (Privacy & Terms) =====
+function initLegalModals() {
+    const legalLinks = document.querySelectorAll('.legal-link');
+    if (legalLinks.length === 0) return;
+
+    // Create a dedicated legal modal container
+    const modal = document.createElement('div');
+    modal.classList.add('team-modal', 'legal-modal');
+    modal.innerHTML = `
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body" style="padding: 1rem 0;"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const legalContent = {
+        privacy: {
+            title: "Privacy Policy",
+            text: "Nostalgia Studios is committed to protecting your personal information. We collect contact details only for booking purposes and use secure systems to store your digital assets. Your data is never shared with third parties without your explicit consent. We prioritize the security of your photographic memories and maintain strict access controls."
+        },
+        terms: {
+            title: "Terms of Service",
+            text: "By engaging our services, you agree to the following: 1. A non-refundable deposit is required for all bookings. 2. Full payment is required before final media delivery. 3. Nostalgia Studios retains creative copyright while granting clients a personal usage license. 4. Rescheduling requires at least 48-hour notice to avoid additional fees."
+        }
+    };
+
+    legalLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const type = link.getAttribute('data-type');
+            const content = legalContent[type];
+            
+            modal.querySelector('.modal-body').innerHTML = `
+                <h2 style="color: var(--primary-color); border: none; font-size: 1.8rem;">${content.title}</h2>
+                <p style="color: #555; text-align: left; margin-top: 1.5rem; line-height: 1.8; font-size: 1rem;">${content.text}</p>
+            `;
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close functionality
+    const closeModal = () => {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    };
+
+    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+}
 
 // ===== 1. MOBILE MENU TOGGLE =====
 function initMobileMenu() {
@@ -294,242 +369,6 @@ function initScrollAnimations() {
         observer.observe(section);
     });
 }
-
-// ===== 9. ADD ALL NECESSARY CSS STYLES =====
-(function addDynamicStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        /* Mobile Menu Styles */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            z-index: 1001;
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav {
-                width: 100%;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                z-index: 1000;
-            }
-            
-            nav.show {
-                max-height: 400px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                padding: 1rem 0;
-            }
-            
-            nav li {
-                width: 100%;
-                text-align: center;
-            }
-            
-            nav a {
-                display: block;
-                padding: 1rem;
-            }
-        }
-        
-        /* Active Navigation Link */
-        nav a.active {
-            background: rgba(255,255,255,0.2);
-            position: relative;
-        }
-        
-        nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            height: 3px;
-            background: #e74c3c;
-            border-radius: 3px 3px 0 0;
-        }
-        
-        /* Fade In Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Team Modal Styles */
-        .team-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .team-modal.show {
-            display: flex;
-            opacity: 1;
-        }
-        
-        .modal-content {
-            background: white;
-            max-width: 500px;
-            width: 90%;
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        
-        .team-modal.show .modal-content {
-            transform: scale(1);
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #666;
-            line-height: 1;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        
-        .modal-close:hover {
-            background: #f0f0f0;
-            color: #e74c3c;
-        }
-        
-        .modal-extra {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #eee;
-        }
-        
-        .modal-extra h4 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-        
-        .modal-contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .modal-contact-form input,
-        .modal-contact-form textarea {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-        
-        .modal-contact-form button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 0.8rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-        }
-        
-        .modal-contact-form button:hover {
-            transform: translateY(-2px);
-        }
-        
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* Image loading */
-        img {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        img.loaded {
-            opacity: 1;
-        }
-    `;
-    
-    document.head.appendChild(style);
-})();
 
 // ===== 10. IMAGE LOAD HANDLER =====
 document.addEventListener('load', function(e) {

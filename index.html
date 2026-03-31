@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Nostolgia studios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Nostalgia Studios | Capturing Timeless Memories</title>
 </head>
 <body>
     
     <!-- Header section with logo and navigation menu -->
     <header>
-        <h1 class="logo">Nostolgia studios</h1>
+        <h1 class="logo">Nostalgia Studios</h1>
         <nav>
             <ul>
                 <li><a href="#home-page">Home</a></li>
@@ -27,8 +28,17 @@
     <main>
         <!-- Home section -->
         <section id="home-page" class="section">
-            <h2>NOSTOLGIA STUDIOS</h2>
-            <p>Creating memories.</p>
+            <div class="hero-slider">
+                <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1452587925148-ce544e77e70d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+            </div>
+            <div class="home-content">
+                <h2>NOSTALGIA STUDIOS</h2>
+                <p>Creating memories.</p>
+            </div>
         </section>
 
        <!-- About section -->
@@ -53,15 +63,38 @@
         <!-- Services section -->
         <section id="services-page" class="section">
             <h2>OUR SERVICES</h2>
-            <ul>
-                <li>Video Production</li>
-                <li>Photography</li>
-                <li>Content Creation</li>
-                <li>Event Coverage</li>
-                <li>Post-Production</li>
-                <li>Studio Photography</li>
-                <li>Outdoor & Lifestyle</li>
-            </ul>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-film"></i></div>
+                    <h3>Video Production</h3>
+                    <p>Cinematic storytelling that captures the essence of your brand or event with professional grade equipment and creative direction.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-camera-retro"></i></div>
+                    <h3>Photography</h3>
+                    <p>High-end digital and film photography specializing in portraits, fashion, and commercial imagery with a nostalgic touch.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-hashtag"></i></div>
+                    <h3>Content Creation</h3>
+                    <p>Tailored visual assets for social media and digital platforms designed to engage your audience and build your identity.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>Studio Sessions</h3>
+                    <p>Controlled lighting and professional backdrops in our fully equipped studio space for high-quality, polished results.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>Post-Production</h3>
+                    <p>Expert color grading, retouching, and non-linear editing to ensure every frame meets our world-class standards.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h3>Event Coverage</h3>
+                    <p>Comprehensive documentation of your most important milestones, ensuring no significant moment goes unrecorded.</p>
+                </div>
+            </div>
         </section>
 
         <!-- Projects section -->
@@ -155,7 +188,7 @@
                 <div class="member-info">
                     <h3>Ms Tatenda</h3>
                     <span class="role">Administrative officer</span>
-                    <p class="bio">handles scheduling shoots and manages administrative tasks, documentation, meeting recorrds and internal communication.</p>
+                    <p class="bio">Handles scheduling shoots and manages administrative tasks, documentation, meeting records, and internal communication.</p>
                     <div class="contact-details">
                         <p>📧 mungandairet@gmail.com</p>
                         <p>📞 +260 974 326 330</p>
@@ -387,7 +420,7 @@
                 <a href="#" title="LinkedIn">IN</a>
             </div>
 
-            <p>&copy; 2026 Nostalgia Studios. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <p>&copy; 2026 Nostalgia Studios. All rights reserved. | <a href="#" class="legal-link" data-type="privacy">Privacy Policy</a> | <a href="#" class="legal-link" data-type="terms">Terms of Service</a></p>
         </div>
     </footer>
 
